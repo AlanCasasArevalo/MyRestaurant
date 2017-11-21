@@ -1,3 +1,4 @@
 <resources>
     <string name="app_name">MyRestaurant</string>
+    <string name="add_button">add_button</string>
 </resources>
