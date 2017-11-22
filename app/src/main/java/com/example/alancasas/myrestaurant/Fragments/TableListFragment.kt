@@ -1,20 +1,18 @@
-package com.example.alancasas.myrestaurant.Activities
+package com.example.alancasas.myrestaurant.Fragments
 
-import android.graphics.Movie
-import android.support.v7.app.AppCompatActivity
+import android.app.Fragment
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
-import android.view.Menu
-import android.view.MenuItem
+import android.view.*
 import com.example.alancasas.myrestaurant.Adapters.MyTableAdapter
 import com.example.alancasas.myrestaurant.Interfaces.CustomTableOnItemClickListener
 import com.example.alancasas.myrestaurant.Models.Dishes
 import com.example.alancasas.myrestaurant.Models.Table
 import com.example.alancasas.myrestaurant.R
 
-class MainActivity : AppCompatActivity() {
+class TableListFragment : Fragment(){
 
     lateinit var tables: ArrayList<Table>
     lateinit var recyclerView : RecyclerView
@@ -25,15 +23,27 @@ class MainActivity : AppCompatActivity() {
 
     var tableCounter = 1
 
-    override fun onCreate(savedInstanceState: Bundle?) {
-        super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_main)
+    lateinit var rootView: View
+
+    companion object {
+        fun newInstance () : TableListFragment{
+            val fragment = TableListFragment()
+            return fragment
+        }
+    }
+
+    override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
+        super.onCreateView(inflater, container, savedInstanceState)
+
+        inflater?.let {
+            rootView = it.inflate(R.layout.fragment_table_list, container, false)
+        }
 
         tables = getAllTables()
-        recyclerView = findViewById(R.id.recycler_view)
-        layoutManager = LinearLayoutManager(this)
+        recyclerView = rootView.findViewById(R.id.recycler_view)
+        layoutManager = LinearLayoutManager(activity)
 
-        adapter = MyTableAdapter(tables, R.layout.recycler_view_list_table, object : CustomTableOnItemClickListener{
+        adapter = MyTableAdapter(tables, R.layout.recycler_view_list_table, object : CustomTableOnItemClickListener {
             override fun onCustomTableOnItemClickListener(table: Table, position: Int) {
                 deleteElement(position)
             }
@@ -47,11 +57,17 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView.adapter = adapter
 
+        return rootView
     }
 
-    override fun onCreateOptionsMenu(menu: Menu?): Boolean {
-        menuInflater.inflate(R.menu.table_list_menu, menu)
-        return true
+    override fun onCreate(savedInstanceState: Bundle?) {
+        super.onCreate(savedInstanceState)
+        setHasOptionsMenu(true)
+    }
+
+    override fun onCreateOptionsMenu(menu: Menu?, inflater: MenuInflater?) {
+        super.onCreateOptionsMenu(menu, inflater)
+        inflater?.inflate(R.menu.table_list_menu, menu)
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
