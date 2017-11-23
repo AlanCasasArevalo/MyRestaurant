@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<android.support.v7.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:card_view="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/list_table_card_view"
+    android:layout_width="match_parent"
+    android:layout_margin="10dp"
+    android:layout_height="200dp"
+    card_view:cardCornerRadius="4dp"
+    card_view:cardBackgroundColor="#E2E2E2"
+    android:clickable="true"
+    android:focusable="true"
+    android:foreground="?android:selectableItemBackground">
+
+    <TextView
+        android:id="@+id/table_number"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center_horizontal|center_vertical"
+        android:textSize="@dimen/table_size"
+        android:text="Mesa numero 1"
+        />
+
+</android.support.v7.widget.CardView>
+
