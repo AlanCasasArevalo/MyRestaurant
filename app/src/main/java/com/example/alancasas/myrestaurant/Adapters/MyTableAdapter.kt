@@ -8,7 +8,7 @@ import com.example.alancasas.myrestaurant.Interfaces.CustomTableOnItemClickListe
 import com.example.alancasas.myrestaurant.Models.Table
 import com.example.alancasas.myrestaurant.ViewHolders.CustomTableViewHolder
 
-class MyTableAdapter(tables: ArrayList<Table>, customTableLayout: Int, listener : CustomTableOnItemClickListener) : RecyclerView.Adapter<CustomTableViewHolder>()  {
+class MyTableAdapter(tables: Array<Table>, customTableLayout: Int, listener: CustomTableOnItemClickListener) : RecyclerView.Adapter<CustomTableViewHolder>()  {
 
     var tables = tables
     var customTableLayout = customTableLayout
