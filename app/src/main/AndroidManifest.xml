@@ -10,16 +10,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.TableListActivity">
-        </activity>
-        <activity android:name=".Activities.TableDetailActivity">
 
-        </activity>
-        <activity android:name=".Activities.DishListActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+        </activity>
+        <activity android:name=".Activities.TableDetailActivity">
+
+        </activity>
+        <activity android:name=".Activities.DishListActivity">
+        </activity>
+        <activity android:name=".Activities.DishDetailActivity">
 
         </activity>
     </application>

@@ -11,7 +11,7 @@ class Dishes : Serializable {
                     R.drawable.berenjenas,
                     8.0,0,10,
                     Garnish.getAllFirstGarnish(),
-                    Allergens.getAllAllergens()),
+                    Allergens.getAllergenArray()),
 
             Dish("Cuscús con verduras y especias",
                     "Delicioso cuscus con verduras de la huerta rehogadas en aceite de oliva virgen extra con las especias mas selectas de la india",
@@ -19,7 +19,7 @@ class Dishes : Serializable {
                     8.0, 0,
                     10,
                     Garnish.getAllFirstGarnish(),
-                    Allergens.getAllAllergens()),
+                    Allergens.getAllergenArray()),
 
             Dish("Lomo de cerdo al horno",
                     "Cerdo criado en granja, cocinado con todo el mimo y horneado a fuego lento.",
@@ -27,7 +27,7 @@ class Dishes : Serializable {
                     10.0,0,
                     15,
                     Garnish.getAllFirstGarnish(),
-                    Allergens.getAllAllergens()),
+                    Allergens.getAllergenArray()),
 
             Dish("Ternera en salsa teriyaki",
                     "Deliciosa ternera cocinada con verduras y una salsa teriyaki traida desde el mismo Japon",
@@ -35,7 +35,7 @@ class Dishes : Serializable {
                     15.0,0,
                     20,
                     Garnish.getAllFirstGarnish(),
-                    Allergens.getAllAllergens()),
+                    Allergens.getAllergenArray()),
 
             Dish("Tarta de manzana",
                     "Si quieres algo dulce, pero sin remordimientos, tu mejor opción es un trozo de tarta de manzana. Sí, es un dulce, pero estaréis tomando en cada bocado algo de fruta. Si bien no es lo más recomendable, un dulce ocasionalmente es un placer para los sentidos. Por eso te invitamos a que descubras todas las recetas de tarta de manzana que tenemos para ti.",
@@ -43,7 +43,7 @@ class Dishes : Serializable {
                     8.5,0,
                     5,
                     Garnish.getAllDessertGarnish(),
-                    Allergens.getAllAllergens()),
+                    Allergens.getAllergenArray()),
 
             Dish("Helado de chocolate",
                     "Un delicado postre suculento y caprichoso",
@@ -51,7 +51,7 @@ class Dishes : Serializable {
                     3.5,0,
                     2,
                     Garnish.getAllDessertGarnish(),
-                    Allergens.getAllAllergens())
+                    Allergens.getAllergenArray())
 
     )
 

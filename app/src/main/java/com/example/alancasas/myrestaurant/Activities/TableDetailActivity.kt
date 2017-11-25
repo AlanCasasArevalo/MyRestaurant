@@ -1,10 +1,9 @@
 package com.example.alancasas.myrestaurant.Activities
 
-import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
+import android.support.v7.app.AppCompatActivity
 import com.example.alancasas.myrestaurant.Fragments.TableDetailFragment
 import com.example.alancasas.myrestaurant.Models.Table
-import com.example.alancasas.myrestaurant.Models.Tables
 import com.example.alancasas.myrestaurant.R
 
 class TableDetailActivity : AppCompatActivity() {
@@ -16,7 +15,6 @@ class TableDetailActivity : AppCompatActivity() {
         setContentView(R.layout.activity_table_detail)
 
         table = intent.getSerializableExtra("ARG_TABLE") as Table
-
 
         if (fragmentManager.findFragmentById(R.id.frame_fragment_table_detail) == null) {
             fragmentManager.beginTransaction()

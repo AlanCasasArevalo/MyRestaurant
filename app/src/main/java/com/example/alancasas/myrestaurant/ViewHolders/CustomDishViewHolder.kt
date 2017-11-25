@@ -3,9 +3,7 @@ package com.example.alancasas.myrestaurant.ViewHolders
 import android.content.Context
 import android.support.v7.widget.RecyclerView
 import android.view.View
-import android.widget.Adapter
-import android.widget.ArrayAdapter
-import android.widget.TextView
+import com.example.alancasas.myrestaurant.Adapters.MyGridAllergensAdapter
 import com.example.alancasas.myrestaurant.Interfaces.CustomDishOnItemClickListener
 import com.example.alancasas.myrestaurant.Models.Dish
 import com.example.alancasas.myrestaurant.R
@@ -26,13 +24,45 @@ class CustomDishViewHolder (itemView: View, context:Context) : RecyclerView.View
         dishName.text = dish.name
         dishPrice.text = "${dish.price}"
 
-        // TODO: tenemos que arreglar lo del la lista de los alergenicos.
-//        var adapter = ArrayAdapter(context,R.layout.grid_dish_allergens, dish.allergens)
-//        dishGridAllergens.adapter = adapter
+        // TODO: tenemos que arreglar lo del la lista de los alergenicos. Tienen que llegar un arra de alergenos que traiga el plato
 
+        dishGridAllergens.adapter = MyGridAllergensAdapter(R.layout.grid_dish_allergens,dish.allergens,context)
 
         itemView.setOnClickListener {
             listener.onCustomDishOnItemClickListener(dish, adapterPosition)
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

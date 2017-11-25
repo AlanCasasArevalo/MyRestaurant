@@ -1,15 +1,14 @@
 package com.example.alancasas.myrestaurant.Fragments
 
 import android.app.Fragment
+import android.content.Intent
 import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.TextureView
 import android.view.View
 import android.view.ViewGroup
-import android.widget.ArrayAdapter
-import android.widget.FrameLayout
-import android.widget.ListView
-import android.widget.TextView
+import android.widget.*
+import com.example.alancasas.myrestaurant.Activities.DishListActivity
 import com.example.alancasas.myrestaurant.Adapters.MyDishesTableDetailAdapter
 import com.example.alancasas.myrestaurant.Models.Dish
 import com.example.alancasas.myrestaurant.Models.Dishes
@@ -39,13 +38,19 @@ class TableDetailFragment : Fragment(){
     var table:Table? = null
         set(value) {
             if (value != null){
+                val addNewDish:Button = rootView.findViewById(R.id.add_dish_to_table)
                 val tableName: TextView = rootView.findViewById(R.id.table_detail_name)
                 val billCount: TextView = rootView.findViewById(R.id.bill_count)
-                val dishList : ListView = rootView.findViewById(R.id.count_list_detail)
+                val dishList : ListView = rootView.findViewById<ListView>(R.id.count_list_detail)
 
                 var dishesArray = Dishes().dishListToArray()
                 val adapter = MyDishesTableDetailAdapter(dishesArray,R.layout.list_dishes_count, activity)
                 dishList.adapter = adapter
+
+                addNewDish.setOnClickListener {
+                    val intent = Intent(activity, DishListActivity::class.java)
+                    startActivity(intent)
+                }
 
                 tableName.text = "Mesa ${value.numberTable}"
                 billCount.text = "${value.billTable}"

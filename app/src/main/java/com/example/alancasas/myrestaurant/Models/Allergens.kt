@@ -5,21 +5,17 @@ import java.io.Serializable
 
 object Allergens : Serializable {
 
+    private val rice = Allergen( R.drawable.arroz)
+    private val potatoes = Allergen(R.drawable.patata)
+    private val lettuce = Allergen(R.drawable.lechuga)
+    private val milk = Allergen(R.drawable.leche)
+    private val olive = Allergen(R.drawable.aceituna)
+    private val gluten = Allergen(R.drawable.gluten)
 
-    private val rice = Allergen("Arroz", R.drawable.arroz)
-    private val potatoes = Allergen("Patatas",R.drawable.patata)
-    private val lettuce = Allergen("Lechuga",R.drawable.lechuga)
-    private val milk = Allergen("Leche",R.drawable.leche)
-    private val olive = Allergen("Aceituna",R.drawable.aceituna)
-    private val gluten = Allergen("Gluten",R.drawable.gluten)
-
-    private var allergens: List<Allergen> = listOf(
+    private var allergens: Array<Allergen> = arrayOf(
             rice, potatoes, lettuce, milk, olive, gluten
     )
 
-    val allergenCount
-        get() = allergens.size
-
-    fun getAllAllergens() : List<Allergen> = allergens
+    fun getAllergenArray() = allergens
 
 }
