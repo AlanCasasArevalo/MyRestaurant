@@ -17,10 +17,6 @@ class CustomTableViewHolder (itemView: View, context: Context) : RecyclerView.Vi
     fun bin (table: Table, listener: CustomTableOnItemClickListener){
         tableNumber.text = "Mesa ${table.numberTable}"
 
-        itemView.setOnClickListener(object : View.OnClickListener{
-            override fun onClick(v: View?) {
-                listener.onCustomTableOnItemClickListener(table, adapterPosition)
-            }
-        })
+        itemView.setOnClickListener { listener.onCustomTableOnItemClickListener(table, adapterPosition) }
     }
 }

@@ -8,26 +8,53 @@ import com.example.alancasas.myrestaurant.Interfaces.CustomTableOnItemClickListe
 import com.example.alancasas.myrestaurant.Models.Table
 import com.example.alancasas.myrestaurant.ViewHolders.CustomTableViewHolder
 
-class MyTableAdapter(tables: Array<Table>, customTableLayout: Int, listener: CustomTableOnItemClickListener) : RecyclerView.Adapter<CustomTableViewHolder>()  {
+class MyTableListAdapter(tables: Array<Table>, customTableLayout: Int, listener: CustomTableOnItemClickListener) : RecyclerView.Adapter<CustomTableViewHolder>()  {
 
-    var tables = tables
-    var customTableLayout = customTableLayout
-    var tableClickListener = listener
-    lateinit var context : Context
+    private var tables = tables
+    private var customTableLayout = customTableLayout
+    private var tableClickListener = listener
+    private lateinit var context : Context
 
     override fun onCreateViewHolder(parent: ViewGroup?, viewType: Int): CustomTableViewHolder {
-        var customTableView = LayoutInflater.from(parent?.context).inflate(customTableLayout, parent, false)
+        val customTableView = LayoutInflater.from(parent?.context).inflate(customTableLayout, parent, false)
         if (parent != null){
             context = parent.context
         }
-        return context?.let { CustomTableViewHolder(customTableView, it) }
+        return context.let { CustomTableViewHolder(customTableView, it) }
     }
 
     override fun onBindViewHolder(holder: CustomTableViewHolder?, position: Int) {
         holder?.bin(tables[position],tableClickListener)
     }
 
-    override fun getItemCount(): Int {
-         return tables.size
-    }
+    override fun getItemCount(): Int = tables.size
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

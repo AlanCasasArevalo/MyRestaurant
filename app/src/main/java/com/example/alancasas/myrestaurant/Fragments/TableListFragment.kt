@@ -8,34 +8,30 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.*
 import com.example.alancasas.myrestaurant.Activities.TableDetailActivity
-import com.example.alancasas.myrestaurant.Adapters.MyTableAdapter
+import com.example.alancasas.myrestaurant.Adapters.MyTableListAdapter
 import com.example.alancasas.myrestaurant.Interfaces.CustomTableOnItemClickListener
 import com.example.alancasas.myrestaurant.Models.Dishes
 import com.example.alancasas.myrestaurant.Models.Table
 import com.example.alancasas.myrestaurant.Models.Tables
 import com.example.alancasas.myrestaurant.R
-import kotlinx.android.synthetic.main.activity_table_detail.*
 
 class TableListFragment : Fragment(){
 
     var tables = Tables()
-    lateinit var recyclerView : RecyclerView
-    lateinit var layoutManager : RecyclerView.LayoutManager
-    lateinit var adapter: MyTableAdapter
-    var dishes = Dishes().dishListToArray()
-    var dish = dishes[0]
+    private lateinit var recyclerView : RecyclerView
+    private lateinit var layoutManager : RecyclerView.LayoutManager
+    private lateinit var adapter: MyTableListAdapter
+    private var dishes = Dishes().dishListToArray()
+    private var dish = dishes[0]
 
-    var tableCounter = tables.count
+    private var tableCounter = tables.count
 
-    lateinit var rootView: View
+    private lateinit var rootView: View
 
     companion object {
         private val ARG_TABLE = "ARG_TABLE"
 
-        fun newInstance () : TableListFragment{
-            val fragment = TableListFragment()
-            return fragment
-        }
+        fun newInstance () : TableListFragment = TableListFragment()
     }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
@@ -48,10 +44,8 @@ class TableListFragment : Fragment(){
         recyclerView = rootView.findViewById(R.id.recycler_view)
         layoutManager = LinearLayoutManager(activity)
 
-        adapter = MyTableAdapter(tables.tablesListToArray(), R.layout.recycler_view_list_table, object : CustomTableOnItemClickListener {
+        adapter = MyTableListAdapter(tables.tablesListToArray(), R.layout.recycler_view_list_table, object : CustomTableOnItemClickListener {
             override fun onCustomTableOnItemClickListener(table: Table, position: Int) {
-//                deleteElement(position)
-
                 val intent = Intent(activity, TableDetailActivity::class.java)
                 intent.putExtra(ARG_TABLE, tables[position])
                 startActivity(intent)
@@ -80,30 +74,18 @@ class TableListFragment : Fragment(){
     }
 
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
-        if (item?.itemId == R.id.add_name){
+        return if (item?.itemId == R.id.add_name){
             addNewElement(0)
-            return true
+            true
         }else{
-            return super.onOptionsItemSelected(item)
+            super.onOptionsItemSelected(item)
         }
     }
 
-    fun getAllTables() : ArrayList<Table>{
-        return  arrayListOf(
-                Table(tableCounter++,dish,20.0)
-        )
-
-    }
-
-    fun addNewElement ( position: Int ){
-        tables.addNewTable(position, Table( tableCounter++, dish, 20.0))
+    private fun addNewElement (position: Int ){
+        tables.addNewTable(position, Table( tableCounter++, dish, 0.0))
         adapter.notifyItemInserted(position)
         layoutManager.scrollToPosition(position)
-    }
-
-    fun deleteElement (position : Int) {
-        tables.removeTable(position)
-        adapter.notifyItemRemoved(position)
     }
 
 }

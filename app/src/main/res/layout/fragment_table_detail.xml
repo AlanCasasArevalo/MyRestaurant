@@ -10,7 +10,7 @@
 
     <TextView
         android:id="@+id/table_detail_name"
-        android:text="Mesa 1"
+        tools:text="Mesa 1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentStart="true"
@@ -30,24 +30,26 @@
     </ListView>
 
     <LinearLayout
+        android:id="@+id/linearLayout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
         android:layout_alignParentBottom="true"
-        android:id="@+id/linearLayout">
+        >
 
         <TextView
             android:id="@+id/bill_detail_count"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Total de la cuenta"
+            android:text="@string/detail_bill_count"
             android:layout_weight="1"
             android:textSize="30dp"
+            tools:text="Total de la cuenta"
             />
 
         <TextView
             android:id="@+id/bill_count"
-            android:text="35€"
+            tools:text="35€"
             android:textSize="30dp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
