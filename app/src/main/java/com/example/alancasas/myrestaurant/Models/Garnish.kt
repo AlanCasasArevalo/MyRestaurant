@@ -4,15 +4,15 @@ import java.io.Serializable
 
 object Garnish : Serializable {
 
-    val fries = "Patatas fritas"
-    val backed = "Patatas al horno"
-    val salad = "Ensalada"
-    val rice = "Arroz"
+    private val fries = "Patatas fritas"
+    private val backed = "Patatas al horno"
+    private val salad = "Ensalada"
+    private val rice = "Arroz"
 
-    val cherryMermelade = "Mermelada de cereza"
-    val chocolatte = "Chocolate derretido"
-    val cream = "Nata montada"
-    val mix = "Mezcla de todos los topings"
+    private val cherryMermelade = "Mermelada de cereza"
+    private val chocolatte = "Chocolate derretido"
+    private val cream = "Nata montada"
+    private val mix = "Mezcla de todos los topings"
 
     private var firstGarnish : List<String> = listOf(
             fries, backed, salad,rice
@@ -28,10 +28,8 @@ object Garnish : Serializable {
     val dessertGarnishCount
         get() = dessertGarnish.size
 
-    fun getAllFirstGarnish(): List<String> {
-        return firstGarnish
-    }
+    fun getAllFirstGarnish(): List<String> = firstGarnish
 
-    fun getAllDessertGarnish() : List<String> { return dessertGarnish }
+    fun getAllDessertGarnish() : List<String> = dessertGarnish
 
 }

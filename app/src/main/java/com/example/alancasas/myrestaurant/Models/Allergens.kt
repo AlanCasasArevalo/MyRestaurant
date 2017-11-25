@@ -6,12 +6,12 @@ import java.io.Serializable
 object Allergens : Serializable {
 
 
-    val rice = Allergen("Arroz", R.drawable.arroz)
-    val potatoes = Allergen("Patatas",R.drawable.patata)
-    val lettuce = Allergen("Lechuga",R.drawable.lechuga)
-    val milk = Allergen("Leche",R.drawable.leche)
-    val olive = Allergen("Aceituna",R.drawable.aceituna)
-    val gluten = Allergen("Gluten",R.drawable.gluten)
+    private val rice = Allergen("Arroz", R.drawable.arroz)
+    private val potatoes = Allergen("Patatas",R.drawable.patata)
+    private val lettuce = Allergen("Lechuga",R.drawable.lechuga)
+    private val milk = Allergen("Leche",R.drawable.leche)
+    private val olive = Allergen("Aceituna",R.drawable.aceituna)
+    private val gluten = Allergen("Gluten",R.drawable.gluten)
 
     private var allergens: List<Allergen> = listOf(
             rice, potatoes, lettuce, milk, olive, gluten
@@ -20,8 +20,6 @@ object Allergens : Serializable {
     val allergenCount
         get() = allergens.size
 
-    fun getAllAllergens() : List<Allergen> {
-        return allergens
-    }
+    fun getAllAllergens() : List<Allergen> = allergens
 
 }
