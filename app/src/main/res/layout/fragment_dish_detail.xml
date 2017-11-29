@@ -73,29 +73,29 @@
             android:layout_weight="2"
             >
 
-        <TextView
-            android:id="@+id/rare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Poco hecho"
-            android:layout_weight="1"
-            />
+            <TextView
+                android:id="@+id/rare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Poco hecho"
+                android:layout_weight="1"
+                />
 
-        <TextView
-            android:id="@+id/medium_rare"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Al punto"
-            android:layout_weight="1"
-            />
+            <TextView
+                android:id="@+id/medium_rare"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Al punto"
+                android:layout_weight="1"
+                />
 
-        <TextView
-            android:id="@+id/well_done"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:text="Muy hecho"
-            android:layout_weight="1"
-            />
+            <TextView
+                android:id="@+id/well_done"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Muy hecho"
+                android:layout_weight="1"
+                />
 
         </LinearLayout>
 
@@ -161,8 +161,6 @@
         </LinearLayout>
     </LinearLayout>
 
-
-
     <LinearLayout
         android:id="@+id/button_layout"
         android:layout_width="match_parent"
@@ -193,17 +191,3 @@
     </LinearLayout>
 
 </RelativeLayout>
-
-
-
-
-
-
-
-
-
-
-
-
-
-

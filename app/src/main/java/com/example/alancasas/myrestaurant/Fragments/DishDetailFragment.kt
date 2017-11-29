@@ -62,7 +62,7 @@ class DishDetailFragment :Fragment() {
                 dishGarnishOption4.text = value.garnish[3]
 
                 saveButton.setOnClickListener {
-                    saveButtonTouched()
+                    saveButtonTouched(value)
                 }
 
                 cancelButton.setOnClickListener {
@@ -83,10 +83,10 @@ class DishDetailFragment :Fragment() {
         return rootView
     }
 
-    private fun saveButtonTouched () {
-        activity.setResult(Activity.RESULT_OK)
+    private fun saveButtonTouched (dishResult: Dish) {
         val returnIntent = Intent()
-        returnIntent.putExtra(ARG_DETAIL_DISH, dish)
+        returnIntent.putExtra(ARG_DETAIL_DISH, dishResult)
+        activity.setResult(Activity.RESULT_OK, returnIntent)
         activity.finish()
     }
 

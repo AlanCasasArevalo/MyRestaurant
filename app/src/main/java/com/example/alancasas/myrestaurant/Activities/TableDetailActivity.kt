@@ -17,9 +17,13 @@ class TableDetailActivity : AppCompatActivity() {
         table = intent.getSerializableExtra("ARG_TABLE") as Table
 
         if (fragmentManager.findFragmentById(R.id.frame_fragment_table_detail) == null) {
+            val tableDetailFragment = TableDetailFragment.newInstance(table)
             fragmentManager.beginTransaction()
-                    .add(R.id.frame_fragment_table_detail, TableDetailFragment.newInstance(table))
+                    .add(R.id.frame_fragment_table_detail, tableDetailFragment)
                     .commit()
         }
     }
+
+
+
 }

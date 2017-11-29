@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.alancasas.myrestaurant.Models.Dish
 import com.example.alancasas.myrestaurant.R
 
-class MyDishesTableDetailAdapter(dishes: Array<Dish>, customTableDishesLayout: Int, context: Context) : BaseAdapter () {
+class MyDishesTableDetailAdapter(dishes: ArrayList<Dish>, customTableDishesLayout: Int, context: Context) : BaseAdapter () {
 
     var dishes = dishes
     var customTableDishesLayout = customTableDishesLayout
@@ -36,6 +36,7 @@ class MyDishesTableDetailAdapter(dishes: Array<Dish>, customTableDishesLayout: I
     override fun getItemId(position: Int): Long = position.toLong()
 
     override fun getCount(): Int = dishes.size
+
 }
 
 

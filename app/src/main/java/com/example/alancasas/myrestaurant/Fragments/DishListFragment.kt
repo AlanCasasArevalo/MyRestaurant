@@ -7,14 +7,9 @@ import android.support.v7.widget.*
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import android.widget.GridView
-import android.widget.Toast
 import com.example.alancasas.myrestaurant.Activities.DishDetailActivity
-import com.example.alancasas.myrestaurant.Activities.TableDetailActivity
 import com.example.alancasas.myrestaurant.Adapters.MyDishesListAdapter
-import com.example.alancasas.myrestaurant.Adapters.MyGridAllergensAdapter
 import com.example.alancasas.myrestaurant.Interfaces.CustomDishOnItemClickListener
-import com.example.alancasas.myrestaurant.Models.Allergens
 import com.example.alancasas.myrestaurant.Models.Dish
 import com.example.alancasas.myrestaurant.Models.Dishes
 import com.example.alancasas.myrestaurant.R
@@ -40,13 +35,6 @@ class DishListFragment : Fragment(){
             rootView = it.inflate(R.layout.fragment_dish_list, container, false)
         }
 
-//        val gridView :GridView = rootView.findViewById(R.id.allergens_grid_view)
-//
-//        val gridAdapter = MyGridAllergensAdapter(R.id.allergens_grid_view,Allergens.getAllergenArray(),activity)
-//
-//        gridView.adapter = gridAdapter
-
-
         recyclerView = rootView.findViewById(R.id.dish_recycler_view)
 
         layoutManager = LinearLayoutManager(activity)
@@ -55,7 +43,9 @@ class DishListFragment : Fragment(){
             override fun onCustomDishOnItemClickListener(dish: Dish, position: Int) {
                 val intent = Intent(activity, DishDetailActivity::class.java)
                 intent.putExtra(DishListFragment.ARG_DISH, dishes[position])
+                intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT)
                 startActivity(intent)
+                activity.finish()
             }
         })
 

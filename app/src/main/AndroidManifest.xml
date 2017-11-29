@@ -2,6 +2,8 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="com.example.alancasas.myrestaurant">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -10,21 +12,17 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity android:name=".Activities.TableListActivity">
-
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-        <activity android:name=".Activities.TableDetailActivity">
-
-        </activity>
-        <activity android:name=".Activities.DishListActivity">
-        </activity>
-        <activity android:name=".Activities.DishDetailActivity">
-
-        </activity>
+        <activity android:name=".Activities.TableDetailActivity" />
+        <activity android:name=".Activities.DishListActivity" />
+        <activity android:name=".Activities.DishDetailActivity" />
+        <activity android:name=".Activities.TableActivity" />
+        <activity android:name=".Activities.DishActivity"></activity>
     </application>
 
 </manifest>
