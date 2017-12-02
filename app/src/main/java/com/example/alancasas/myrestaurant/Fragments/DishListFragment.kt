@@ -19,40 +19,54 @@ class DishListFragment : Fragment(){
     private lateinit var recyclerView : RecyclerView
     private lateinit var layoutManager : RecyclerView.LayoutManager
     private lateinit var adapter : MyDishesListAdapter
-    private var dishes = Dishes().dishListToArray()
 
     private lateinit var rootView: View
 
     companion object {
         private val ARG_DISH = "ARG_DISH"
-        fun newDishInstance(): DishListFragment = DishListFragment()
+        fun newDishInstance(dishes: Dishes): DishListFragment {
+            val fragment = DishListFragment()
+            val arguments = Bundle()
+            arguments.putSerializable(ARG_DISH,dishes)
+            fragment.arguments = arguments
+            return fragment
+        }
     }
+
+    private var dishes: Dishes? = null
+        set(value) {
+            if (value != null){
+                recyclerView = rootView.findViewById(R.id.dish_recycler_view)
+
+                layoutManager = LinearLayoutManager(activity)
+
+                adapter = MyDishesListAdapter(value,R.layout.recycler_view_list_dish, object : CustomDishOnItemClickListener{
+                    override fun onCustomDishOnItemClickListener(dish: Dish, position: Int) {
+                        val intent = Intent(activity, DishDetailActivity::class.java)
+                        intent.putExtra(DishListFragment.ARG_DISH, value[position])
+                        intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT)
+                        startActivity(intent)
+                        activity.finish()
+                    }
+                })
+
+                recyclerView.setHasFixedSize(true)
+                recyclerView.itemAnimator = DefaultItemAnimator()
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = adapter
+            }
+        }
+
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
         inflater?.let {
             rootView = it.inflate(R.layout.fragment_dish_list, container, false)
-        }
-
-        recyclerView = rootView.findViewById(R.id.dish_recycler_view)
-
-        layoutManager = LinearLayoutManager(activity)
-
-        adapter = MyDishesListAdapter(dishes,R.layout.recycler_view_list_dish, object : CustomDishOnItemClickListener{
-            override fun onCustomDishOnItemClickListener(dish: Dish, position: Int) {
-                val intent = Intent(activity, DishDetailActivity::class.java)
-                intent.putExtra(DishListFragment.ARG_DISH, dishes[position])
-                intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT)
-                startActivity(intent)
-                activity.finish()
+            if (arguments != null){
+                dishes = arguments.getSerializable(ARG_DISH) as Dishes
             }
-        })
-
-        recyclerView.setHasFixedSize(true)
-        recyclerView.itemAnimator = DefaultItemAnimator()
-        recyclerView.layoutManager = layoutManager
-        recyclerView.adapter = adapter
+        }
 
         return rootView
     }

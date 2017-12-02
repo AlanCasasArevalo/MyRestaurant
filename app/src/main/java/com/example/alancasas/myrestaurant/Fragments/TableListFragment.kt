@@ -17,48 +17,54 @@ import com.example.alancasas.myrestaurant.R
 
 class TableListFragment : Fragment(){
 
-    var tables = Tables()
     private lateinit var recyclerView : RecyclerView
     private lateinit var layoutManager : RecyclerView.LayoutManager
     private lateinit var adapter: MyTableListAdapter
-    private var dishes = Dishes().dishListToArray()
-    private var dish = dishes[0]
-
-    private var tableCounter = tables.count
 
     private lateinit var rootView: View
 
     companion object {
         private val ARG_TABLE = "ARG_TABLE"
 
-        fun newInstance () : TableListFragment = TableListFragment()
+        fun newInstance (tables: Tables) : TableListFragment {
+            val fragment = TableListFragment()
+            val arguments = Bundle()
+            arguments.putSerializable(ARG_TABLE, tables)
+            fragment.arguments = arguments
+            return fragment
+        }
     }
+
+    private var tables: Tables? = null
+        set(value) {
+            if (value != null){
+                recyclerView = rootView.findViewById(R.id.recycler_view)
+                layoutManager = LinearLayoutManager(activity)
+
+                adapter = MyTableListAdapter(value.tablesListToArray(), R.layout.recycler_view_list_table, object : CustomTableOnItemClickListener {
+                    override fun onCustomTableOnItemClickListener(table: Table, position: Int) {
+                        val intent = Intent(activity, TableDetailActivity::class.java)
+                        intent.putExtra(ARG_TABLE, value[position])
+                        startActivity(intent)
+                    }
+                })
+
+                recyclerView.setHasFixedSize(true)
+                recyclerView.itemAnimator = DefaultItemAnimator()
+                recyclerView.layoutManager = layoutManager
+                recyclerView.adapter = adapter
+            }
+        }
 
     override fun onCreateView(inflater: LayoutInflater?, container: ViewGroup?, savedInstanceState: Bundle?): View {
         super.onCreateView(inflater, container, savedInstanceState)
 
         inflater?.let {
             rootView = it.inflate(R.layout.fragment_table_list, container, false)
-        }
-
-        recyclerView = rootView.findViewById(R.id.recycler_view)
-        layoutManager = LinearLayoutManager(activity)
-
-        adapter = MyTableListAdapter(tables.tablesListToArray(), R.layout.recycler_view_list_table, object : CustomTableOnItemClickListener {
-            override fun onCustomTableOnItemClickListener(table: Table, position: Int) {
-                val intent = Intent(activity, TableDetailActivity::class.java)
-                intent.putExtra(ARG_TABLE, tables[position])
-                startActivity(intent)
+            if (arguments != null){
+                tables = arguments.getSerializable(ARG_TABLE) as Tables
             }
-        })
-
-        recyclerView.setHasFixedSize(true)
-
-        recyclerView.itemAnimator = DefaultItemAnimator()
-
-        recyclerView.layoutManager = layoutManager
-
-        recyclerView.adapter = adapter
+        }
 
         return rootView
     }
@@ -83,7 +89,8 @@ class TableListFragment : Fragment(){
     }
 
     private fun addNewElement (position: Int ){
-        tables.addNewTable(position, Table( tableCounter++, dish, 0.0))
+        var tableCounter = tables?.count ?: 0
+        tables?.addNewTable(position, Table( tableCounter++, null, 0.0))
         adapter.notifyItemInserted(position)
         layoutManager.scrollToPosition(position)
     }

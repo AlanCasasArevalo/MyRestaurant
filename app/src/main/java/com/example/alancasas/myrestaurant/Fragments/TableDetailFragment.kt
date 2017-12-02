@@ -47,6 +47,7 @@ class TableDetailFragment : Fragment(){
                 val tableName: TextView = rootView.findViewById(R.id.table_detail_name)
                 val billCountTextView: TextView = rootView.findViewById(R.id.bill_count)
 
+                //TODO: mirar a ver si este es el problema que al parecer si de vovler o no con fallo en tablet
                 addNewDish.setOnClickListener {
                     val intent = Intent(activity, DishListActivity::class.java)
                     startActivityForResult(intent, REQUEST_DISH)
