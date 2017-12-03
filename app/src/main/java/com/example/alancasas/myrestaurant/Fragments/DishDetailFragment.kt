@@ -13,8 +13,6 @@ import android.widget.ImageView
 import android.widget.TextView
 import com.example.alancasas.myrestaurant.Models.Dish
 import com.example.alancasas.myrestaurant.R
-import kotlinx.android.synthetic.main.fragment_dish_detail.*
-import kotlinx.android.synthetic.main.fragment_dish_detail.view.*
 
 class DishDetailFragment :Fragment() {
 
@@ -44,7 +42,7 @@ class DishDetailFragment :Fragment() {
             if (value != null){
 
                 val dishName:TextView = rootView.findViewById(R.id.detail_dish_name)
-                val dishCookTime:TextView = rootView.findViewById(R.id.detail_dish_coock_time)
+                val dishCookTime:TextView = rootView.findViewById(R.id.detail_dish_cook_time)
                 val dishImage:ImageView = rootView.findViewById(R.id.detail_dish_image)
                 val dishGarnishOption1:TextView = rootView.findViewById(R.id.garnish_option1)
                 val dishGarnishOption2:TextView = rootView.findViewById(R.id.garnish_option2)
@@ -54,7 +52,7 @@ class DishDetailFragment :Fragment() {
                 val cancelButton: Button = rootView.findViewById(R.id.cancel_dish_button)
 
                 dishName.text = value.name
-                dishCookTime.text = "${value.coockTime}"
+                dishCookTime.text = "${value.cookTime}"
                 dishImage.setImageResource(value.image)
                 dishGarnishOption1.text = value.garnish!![0]
                 dishGarnishOption2.text = value.garnish[1]

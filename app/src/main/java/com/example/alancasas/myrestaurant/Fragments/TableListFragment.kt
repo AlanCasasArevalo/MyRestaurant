@@ -43,8 +43,7 @@ class TableListFragment : Fragment(){
 
                 adapter = MyTableListAdapter(value.tablesListToArray(), R.layout.recycler_view_list_table, object : CustomTableOnItemClickListener {
                     override fun onCustomTableOnItemClickListener(table: Table, position: Int) {
-                        val intent = Intent(activity, TableDetailActivity::class.java)
-                        intent.putExtra(ARG_TABLE, value[position])
+                        val intent = TableDetailActivity.intent(activity, value[position])
                         startActivity(intent)
                     }
                 })
@@ -79,6 +78,8 @@ class TableListFragment : Fragment(){
         inflater?.inflate(R.menu.table_list_menu, menu)
     }
 
+
+    // TODO: Debuggear el numero que sale por defecto de una tabla nueva
     override fun onOptionsItemSelected(item: MenuItem?): Boolean {
         return if (item?.itemId == R.id.add_name){
             addNewElement(0)

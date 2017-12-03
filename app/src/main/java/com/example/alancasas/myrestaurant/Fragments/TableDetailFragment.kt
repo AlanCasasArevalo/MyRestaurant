@@ -134,18 +134,18 @@ class TableDetailFragment : Fragment(){
 //
 //
 //            if (dishesArray.isEmpty()){
-//                dish.amountDish++
-//                billTableCount(dish)
-//                dishesArray.add(dish)
+//                dishes.amountDish++
+//                billTableCount(dishes)
+//                dishesArray.add(dishes)
 //            }else {
 //                for (dishIntoArray in dishesArray) {
-//                    if (dishIntoArray.name == dish.name) {
+//                    if (dishIntoArray.name == dishes.name) {
 //                        dishIntoArray.amountDish++
 //                        billTableCount(dishIntoArray)
 //                    } else {
-//                        dish.amountDish++
-//                        tempDishArray.add(dish)
-//                        billTableCount(dish)
+//                        dishes.amountDish++
+//                        tempDishArray.add(dishes)
+//                        billTableCount(dishes)
 //                    }
 //                }
 //            }

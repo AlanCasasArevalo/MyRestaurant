@@ -6,6 +6,7 @@
     xmlns:tools="http://schemas.android.com/tools">
 
     <ImageView
+        android:contentDescription="@string/icon_allergen"
         android:id="@+id/allergen_icon"
         android:layout_width="match_parent"
         android:layout_height="match_parent"

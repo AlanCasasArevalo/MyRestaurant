@@ -12,4 +12,7 @@
     <string name="allergen_icon_four">Icono numero 4 de alergenos</string>
     <string name="allergen_icon_five">Icono numero 5 de alergenos</string>
     <string name="allergen_icon_six">Icono numero 6 de alergenos</string>
+    <string name="dish_detail_description">Descripccion del plato detallada</string>
+    <string name="icon_allergen">Icono descriptivo del alergeno en especial</string>
+    <string name="list_image_dish">Imagen de la lista de platos a elegir</string>
 </resources>

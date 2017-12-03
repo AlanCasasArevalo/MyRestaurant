@@ -16,6 +16,7 @@
         android:layout_height="match_parent">
         
         <ImageView
+            android:contentDescription="@string/list_image_dish"
             android:id="@+id/dish_image"
             android:layout_width="150dp"
             android:layout_height="150dp"

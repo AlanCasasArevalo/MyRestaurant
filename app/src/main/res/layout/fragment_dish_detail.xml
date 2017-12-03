@@ -9,6 +9,7 @@
     >
 
     <ImageView
+        android:contentDescription="@string/dish_detail_description"
         android:id="@+id/detail_dish_image"
         android:layout_width="wrap_content"
         android:layout_height="200dp"
@@ -35,7 +36,7 @@
             tools:text="Nombre del plato" />
 
         <TextView
-            android:id="@+id/detail_dish_coock_time"
+            android:id="@+id/detail_dish_cook_time"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_weight="1"
@@ -46,7 +47,7 @@
     </LinearLayout>
 
     <LinearLayout
-        android:id="@+id/coock_preference_layout"
+        android:id="@+id/cook_preference_layout"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="horizontal"
@@ -55,7 +56,7 @@
         >
 
         <TextView
-            android:id="@+id/dish_coock_preferencies"
+            android:id="@+id/dish_cook_preferencies"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Coccion"
@@ -106,7 +107,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_above="@+id/button_layout"
-        android:layout_below="@+id/coock_preference_layout"
+        android:layout_below="@+id/cook_preference_layout"
         android:gravity="center"
         >
 
