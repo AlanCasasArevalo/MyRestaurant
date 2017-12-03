@@ -1,6 +1,7 @@
 package com.example.alancasas.myrestaurant.Fragments
 
 import android.app.Activity
+import android.app.AlertDialog
 import android.app.Fragment
 import android.content.Intent
 import android.content.SharedPreferences
@@ -21,8 +22,8 @@ import kotlinx.android.synthetic.main.fragment_table_detail.*
 class TableDetailFragment : Fragment(){
 
     private lateinit var rootView : View
-    private var dishesArray : ArrayList<Dish> = arrayListOf()
-    private var tempDishArray : ArrayList<Dish> = arrayListOf()
+    private var dishesArray : MutableList<Dish> = mutableListOf()
+    private var tempDishArray : MutableList<Dish> = mutableListOf()
     private var billCount = 0.0
     private var dishAdded:Dish? = null
 
@@ -84,7 +85,6 @@ class TableDetailFragment : Fragment(){
             dishAdded = data?.getSerializableExtra("ARG_DETAIL_DISH") as? Dish
             addNewDishToTable(dishAdded)
         }
-
     }
 
     private fun billTableCount(dish: Dish?){
@@ -111,47 +111,10 @@ class TableDetailFragment : Fragment(){
     }
 
     private fun addNewDishToTable(dish:Dish?){
+        // TODO: Arreglar el tema de agregar un plato a la lista de cuenta.
         dish?.let {
-
-//            kkkkkkkk
-
-            var dishBoolean = dishesArray.contains(dish)
-
-            if (dishesArray.isEmpty()){
-                dishesArray.add(dish)
-            }else{
-                if (!dishBoolean){
-                    println("Esta en el array $dishBoolean")
-                }else{
-                    println("No esta en el array $dishBoolean")
-                    dishesArray.add(dish)
-                }
-            }
-
-//
-//
-//
-//
-//
-//            if (dishesArray.isEmpty()){
-//                dishes.amountDish++
-//                billTableCount(dishes)
-//                dishesArray.add(dishes)
-//            }else {
-//                for (dishIntoArray in dishesArray) {
-//                    if (dishIntoArray.name == dishes.name) {
-//                        dishIntoArray.amountDish++
-//                        billTableCount(dishIntoArray)
-//                    } else {
-//                        dishes.amountDish++
-//                        tempDishArray.add(dishes)
-//                        billTableCount(dishes)
-//                    }
-//                }
-//            }
-//kkkkkkkkk
-//            dishesArray.addAll(tempDishArray)
-
+            dishesArray.add(dish)
+            billTableCount(dish)
             setAdapter()
         }
     }

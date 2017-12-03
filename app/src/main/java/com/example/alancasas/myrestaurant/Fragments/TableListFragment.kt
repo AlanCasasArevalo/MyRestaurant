@@ -1,7 +1,6 @@
 package com.example.alancasas.myrestaurant.Fragments
 
 import android.app.Fragment
-import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
 import android.support.v7.widget.LinearLayoutManager
@@ -10,7 +9,6 @@ import android.view.*
 import com.example.alancasas.myrestaurant.Activities.TableDetailActivity
 import com.example.alancasas.myrestaurant.Adapters.MyTableListAdapter
 import com.example.alancasas.myrestaurant.Interfaces.CustomTableOnItemClickListener
-import com.example.alancasas.myrestaurant.Models.Dishes
 import com.example.alancasas.myrestaurant.Models.Table
 import com.example.alancasas.myrestaurant.Models.Tables
 import com.example.alancasas.myrestaurant.R

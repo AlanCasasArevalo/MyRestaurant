@@ -5,6 +5,7 @@ import android.app.Fragment
 import android.content.Intent
 import android.os.Bundle
 import android.support.v7.widget.DefaultItemAnimator
+import android.support.v7.widget.GridLayoutManager
 import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.view.LayoutInflater
@@ -16,7 +17,6 @@ import com.example.alancasas.myrestaurant.Activities.DishDetailActivity
 import com.example.alancasas.myrestaurant.Adapters.MyDishesListAdapter
 import com.example.alancasas.myrestaurant.Interfaces.CustomDishOnItemClickListener
 import com.example.alancasas.myrestaurant.Models.Dish
-import com.example.alancasas.myrestaurant.Models.Dishes
 import com.example.alancasas.myrestaurant.Models.Table
 import com.example.alancasas.myrestaurant.R
 import kotlinx.coroutines.experimental.Deferred
@@ -28,6 +28,11 @@ import java.net.URL
 import java.util.*
 
 class DishListFragment : Fragment(){
+
+    enum class VIEW_SWITCHER_INDEX(val index: Int){
+        LOADING(0),
+        DISHESLOADED(1)
+    }
 
     private lateinit var dishRecyclerView: RecyclerView
     private lateinit var layoutManager : RecyclerView.LayoutManager
@@ -50,16 +55,22 @@ class DishListFragment : Fragment(){
     var table: Table? = null
         set(value) {
             field = value
-            value?.let {
+            if (value != null){
                 dishes = value.dishes
             }
         }
 
     private var dishes: List<Dish>? = null
         set(value) {
-            field = value
+            if(value == null){
+                updateDish()
+            }else{
+                viewSwitcher.displayedChild = VIEW_SWITCHER_INDEX.DISHESLOADED.index
+                dishRecyclerView = rootView.findViewById(R.id.dish_recycler_view)
+//            layoutManager = LinearLayoutManager(activity)
+                layoutManager = GridLayoutManager(activity,resources.getInteger(R.integer.recycler_coulums))
 
-                adapter = MyDishesListAdapter(value,R.layout.recycler_view_list_dish, object : CustomDishOnItemClickListener{
+                adapter = MyDishesListAdapter(value, R.layout.recycler_view_list_dish, object : CustomDishOnItemClickListener{
                     override fun onCustomDishOnItemClickListener(dish: Dish, position: Int) {
                         val intent = DishDetailActivity.intent(activity, value?.get(position))
                         intent.addFlags(Intent.FLAG_ACTIVITY_FORWARD_RESULT)
@@ -67,12 +78,12 @@ class DishListFragment : Fragment(){
                         activity.finish()
                     }
                 })
-                dishRecyclerView.adapter = adapter
+//                dishRecyclerView.setHasFixedSize(true)
+                dishRecyclerView.itemAnimator = DefaultItemAnimator()
+                dishRecyclerView.layoutManager = layoutManager
 
-            if (value != null){
-                viewSwitcher.displayedChild = 1
-            }else{
-                updateDish()
+                dishRecyclerView.adapter = adapter
+                table?.dishes = value
             }
         }
 
@@ -87,13 +98,6 @@ class DishListFragment : Fragment(){
             viewSwitcher.setInAnimation(activity, android.R.anim.fade_in)
             viewSwitcher.setOutAnimation(activity, android.R.anim.fade_in)
 
-            dishRecyclerView = rootView.findViewById(R.id.dish_recycler_view)
-            layoutManager = LinearLayoutManager(activity)
-            dishRecyclerView.setHasFixedSize(true)
-            dishRecyclerView.itemAnimator = DefaultItemAnimator()
-            dishRecyclerView.layoutManager = layoutManager
-
-
             if (arguments != null){
                 table = arguments.getSerializable(ARG_DISH_TABLE) as Table
             }
@@ -105,15 +109,16 @@ class DishListFragment : Fragment(){
 
     fun updateDish (){
 
-        viewSwitcher.displayedChild = 0
-
         async(UI){
+            viewSwitcher.displayedChild = VIEW_SWITCHER_INDEX.LOADING.index
+
             val newDish : Deferred<List<Dish>?> = bg {
                 downloadDishes(table!!)
             }
 
-            dishes = newDish.await()
-            if (newDish.await() == null){
+            val donwloadedDishes = newDish.await()
+
+            if (donwloadedDishes == null){
                 AlertDialog.Builder(activity)
                         .setTitle("Error")
                         .setMessage("No se pudo descargar la lista de los platos")
@@ -123,7 +128,7 @@ class DishListFragment : Fragment(){
                         .setNegativeButton("Salir", {_, _ -> activity.finish()})
                         .show()
             }else{
-                dishes = newDish.await()
+                dishes = donwloadedDishes
             }
         }
 
@@ -131,9 +136,6 @@ class DishListFragment : Fragment(){
 
     fun downloadDishes(table: Table): List<Dish>? {
         try {
-
-            var dishImage:ImageView? = null
-
             // Nos descargamos la información del tiempo a machete
             val url = URL("http://www.mocky.io/v2/5a23aec92e0000330383bebe")
             val jsonString = Scanner(url.openStream(), "UTF-8").useDelimiter("\\A").next()
@@ -152,14 +154,13 @@ class DishListFragment : Fragment(){
 
                 val imageInt = Integer.parseInt(iconString)
                 val iconResource = when(imageInt){
-                    2 -> R.drawable.berenjenas
-                    3 -> R.drawable.cuscus
-                    4 -> R.drawable.lomo
-                    5 -> R.drawable.tarta_manzana
-                    6 -> R.drawable.helado_chocolate
+                    1 -> R.drawable.berenjenas
+                    2 -> R.drawable.cuscus
+                    3 -> R.drawable.lomo
+                    4 -> R.drawable.tarta_manzana
+                    5 -> R.drawable.helado_chocolate
                     else -> R.drawable.aceituna
                 }
-
 
                 dishes.add(Dish(name,description,iconResource,price,1,cookTime,null, null))
             }
@@ -173,7 +174,6 @@ class DishListFragment : Fragment(){
 
         return null
     }
-
 
 }
 

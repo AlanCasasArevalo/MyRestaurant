@@ -7,9 +7,10 @@ import android.view.ViewGroup
 import com.example.alancasas.myrestaurant.Interfaces.CustomDishOnItemClickListener
 import com.example.alancasas.myrestaurant.Models.Dish
 import com.example.alancasas.myrestaurant.Models.Dishes
+import com.example.alancasas.myrestaurant.R
 import com.example.alancasas.myrestaurant.ViewHolders.CustomDishViewHolder
 
-class MyDishesListAdapter (dishes: List<Dish>?, customDishLayout: Int, listerner: CustomDishOnItemClickListener) : RecyclerView.Adapter<CustomDishViewHolder>()   {
+class MyDishesListAdapter (dishes: List<Dish>?,customDishLayout: Int, listerner: CustomDishOnItemClickListener) : RecyclerView.Adapter<CustomDishViewHolder>()   {
 
     private var dishes = dishes
     private var customDishLayout = customDishLayout

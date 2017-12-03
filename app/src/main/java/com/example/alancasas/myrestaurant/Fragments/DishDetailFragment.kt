@@ -28,13 +28,6 @@ class DishDetailFragment :Fragment() {
             fragment.arguments = arguments
             return fragment
         }
-
-        fun intent(context:Context, dish: Dish) : Intent{
-            val intent = Intent(context, DishDetailFragment::class.java)
-            intent.putExtra(ARG_DETAIL_DISH, dish)
-            return intent
-        }
-
     }
 
     var dish: Dish? = null
@@ -54,10 +47,12 @@ class DishDetailFragment :Fragment() {
                 dishName.text = value.name
                 dishCookTime.text = "${value.cookTime}"
                 dishImage.setImageResource(value.image)
-                dishGarnishOption1.text = value.garnish!![0]
-                dishGarnishOption2.text = value.garnish[1]
-                dishGarnishOption3.text = value.garnish[2]
-                dishGarnishOption4.text = value.garnish[3]
+
+// TODO: Arreglar el tema de las guarniciones
+//                dishGarnishOption1.text = value.garnish[0]
+//                dishGarnishOption2.text = value.garnish[1]
+//                dishGarnishOption3.text = value.garnish[2]
+//                dishGarnishOption4.text = value.garnish[3]
 
                 saveButton.setOnClickListener {
                     saveButtonTouched(value)

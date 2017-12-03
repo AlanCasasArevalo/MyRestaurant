@@ -21,8 +21,6 @@
         <activity android:name=".Activities.TableDetailActivity" />
         <activity android:name=".Activities.DishListActivity" />
         <activity android:name=".Activities.DishDetailActivity" />
-        <activity android:name=".Activities.TableActivity" />
-        <activity android:name=".Activities.DishActivity"></activity>
     </application>
 
 </manifest>

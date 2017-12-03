@@ -32,11 +32,36 @@ class TableDetailActivity : AppCompatActivity() {
             defaultTable = table
         }
 
-        if (fragmentManager.findFragmentById(R.id.frame_fragment_table_detail) == null) {
-            val tableDetailFragment = TableDetailFragment.newInstance(defaultTable)
+        if (fragmentManager.findFragmentById(R.id.activity_list_frame) == null){
+            val fragment = TableDetailFragment.newInstance(defaultTable)
             fragmentManager.beginTransaction()
-                    .add(R.id.frame_fragment_table_detail, tableDetailFragment)
+                    .add(R.id.activity_list_frame, fragment)
                     .commit()
         }
     }
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

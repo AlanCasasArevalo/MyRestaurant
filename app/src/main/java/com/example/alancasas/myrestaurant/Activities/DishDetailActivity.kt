@@ -18,7 +18,7 @@ class DishDetailActivity : AppCompatActivity() {
         val EXTRA_DISH = "EXTRA_DISH"
 
         fun intent (context: Context, dish: Dish?) : Intent {
-            val intent = Intent(context, TableDetailActivity::class.java)
+            val intent = Intent(context, DishDetailActivity::class.java)
             intent.putExtra(EXTRA_DISH, dish)
             return intent
         }

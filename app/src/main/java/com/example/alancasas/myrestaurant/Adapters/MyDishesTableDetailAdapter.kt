@@ -9,7 +9,7 @@ import android.widget.TextView
 import com.example.alancasas.myrestaurant.Models.Dish
 import com.example.alancasas.myrestaurant.R
 
-class MyDishesTableDetailAdapter(dishes: ArrayList<Dish>, customTableDishesLayout: Int, context: Context) : BaseAdapter () {
+class MyDishesTableDetailAdapter(dishes: List<Dish>, customTableDishesLayout: Int, context: Context) : BaseAdapter () {
 
     var dishes = dishes
     var customTableDishesLayout = customTableDishesLayout
