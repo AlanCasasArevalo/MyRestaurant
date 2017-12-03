@@ -1,0 +1,50 @@
+{
+  "dishes" : [
+      {
+          "foodName": "Berenjenas a la miel",
+          "foodImage":"http://estag.fimagenes.com/img/3/1/L/4/G/1L4G_900.jpg",
+          "foodAllergens":["Aceituna"],
+          "foodPrice" : 8,
+          "foodCookTime" : 10,          
+          "foodDescription" : "Deliciosas berenjenas rebozadas, fritas en un aceite de oliva virgen extra"
+        },
+      {
+        "foodName": "Cuscús con verduras y especias",
+        "foodImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGCPPqWtGO5QWlzTPwPzIY8Hzzwt2ygFUlgmmAHUI_8qiajGygww",
+        "foodAllergens":["Aceituna", "harina", "especias"],                
+        "foodPrice" : 8,
+        "foodCookTime" : 10,
+        "foodDescription" : "Delicioso cuscus con verduras de la huerta rehogadas en aceite de oliva virgen extra con las especias mas selectas de la india"
+        },
+      {
+        "foodName": "Lomo de cerdo al horno",
+        "foodImage":"http://3.bp.blogspot.com/-a1EyzSieLJE/VXhvPOzCZQI/AAAAAAAAK88/oQr5VKk69e8/s1600/P2180009.JPGternet",
+        "foodAllergens":["teriyaki",
+          "sésamo", 
+          "pimiento"] ,
+        "foodPrice" : 16,
+        "foodCookTime" : 10,        
+        "foodDescription" : "Deliciosa ternera cocinada con verduras y una salsa teriyaki traida desde el mismo Japon"
+        },
+      {
+        "foodName": "Tarta de manzana",
+        "foodImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQuiHFwjzu6Y38Qm1_6j9vZihBd4E0qEhcBx-v85TYyLVHhZ3xj",
+        "foodAllergens":["harina",
+          "leche", 
+          "huevo"],
+        "foodPrice" : 4,
+        "foodCookTime" : 15,          
+        "foodDescription" : "Si quieres algo dulce, pero sin remordimientos, tu mejor opción es un trozo de tarta de manzana. Sí, es un dulce, pero estaréis tomando en cada bocado algo de fruta. Si bien no es lo más recomendable, un dulce ocasionalmente es un placer para los sentidos. Por eso te invitamos a que descubras todas las recetas de tarta de manzana que tenemos para ti."
+        },
+      {
+        "foodName": "Helado de chocolate",
+        "foodImage":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT0Hm_6gsnB6WOIeyxML5maeRu1TO6dnHW5Qwk-xSe26KNo_HDruQ",
+        "foodAllergens":["leche", 
+          "huevo",
+          "Cacao"],    
+          "foodPrice" : 4,
+          "foodCookTime": 5,          
+          "foodDescription" : "Un delicado postre suculento y caprichoso"
+      }
+  ]
+}

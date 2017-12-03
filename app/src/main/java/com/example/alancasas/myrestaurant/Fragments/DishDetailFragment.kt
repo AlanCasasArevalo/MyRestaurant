@@ -44,7 +44,7 @@ class DishDetailFragment :Fragment() {
             if (value != null){
 
                 val dishName:TextView = rootView.findViewById(R.id.detail_dish_name)
-                val dishCoockTime:TextView = rootView.findViewById(R.id.detail_dish_coock_time)
+                val dishCookTime:TextView = rootView.findViewById(R.id.detail_dish_coock_time)
                 val dishImage:ImageView = rootView.findViewById(R.id.detail_dish_image)
                 val dishGarnishOption1:TextView = rootView.findViewById(R.id.garnish_option1)
                 val dishGarnishOption2:TextView = rootView.findViewById(R.id.garnish_option2)
@@ -54,9 +54,9 @@ class DishDetailFragment :Fragment() {
                 val cancelButton: Button = rootView.findViewById(R.id.cancel_dish_button)
 
                 dishName.text = value.name
-                dishCoockTime.text = "${value.coockTime}"
+                dishCookTime.text = "${value.coockTime}"
                 dishImage.setImageResource(value.image)
-                dishGarnishOption1.text = value.garnish[0]
+                dishGarnishOption1.text = value.garnish!![0]
                 dishGarnishOption2.text = value.garnish[1]
                 dishGarnishOption3.text = value.garnish[2]
                 dishGarnishOption4.text = value.garnish[3]
